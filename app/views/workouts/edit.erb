@@ -1,0 +1,18 @@
+<h1>Edit Workout!</h1>
+
+<form action="/workouts/<%= @workout.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<label for="name">Update the name: </label>
+<input type="text" name="name" value="<%= @workout.name %>">
+<br>
+<br>
+<label for="description">Update the description: </label>
+<textarea name="description"><%= @workout.description %></textarea>
+<br>
+<br>
+<label for="instructions">Update the instructions: </label>
+<textarea name="instructions"><%= @workout.instructions %></textarea>
+<br>
+<br>
+<input type="submit" value="Update Workout!">
+</form>

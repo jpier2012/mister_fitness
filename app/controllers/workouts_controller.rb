@@ -24,7 +24,8 @@ class WorkoutsController < ApplicationController
 
   get "/workouts/:id/edit" do
     redirect_if_not_logged_in
-    # erb :"workouts/edit"
+    @workout = current_user.workouts.find_by_id(params[:id])
+    erb :"workouts/edit"
   end
 
   patch "/workouts/:id" do
