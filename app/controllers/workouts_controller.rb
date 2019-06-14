@@ -31,12 +31,19 @@ class WorkoutsController < ApplicationController
   get "/workouts/:id/edit" do
     redirect_if_not_logged_in
     @workout = current_user.workouts.find_by_id(params[:id])
+    redirect "/workouts" if !@workout
     erb :"workouts/edit"
   end
 
   patch "/workouts/:id" do
     workout = current_user.workouts.find_by_id(params[:id])
     workout.update(name: params[:name], description: params[:description], instructions: params[:instructions])
+    redirect "/workouts"
+  end
+
+  delete "/workouts/:id/delete" do
+    workout = current_user.workouts.find_by_id(params[:id])
+    workout.delete if workout
     redirect "/workouts"
   end
 end
