@@ -3,9 +3,11 @@
 <br>
 <ol>
 <% @workouts.each do |w| %>
-  <h2><a href="/workouts/<%= w.id %>/edit"><%= w.name %></a></h2>
+  <li><h2><a href="/workouts/<%= w.id %>/edit"><%= w.name %></a></h2></li>
+  <ul>
   <li>Date logged: <%= w.created_at.strftime("%m-%d-%y") %></li>
   <li>Description: <%= w.description %></li>
+  </ul>
   <br>
 <% end %>
 </ol>
