@@ -1,10 +1,9 @@
 <h1>Workouts page</h1>
 <ol>
 <% @workouts.each do |w| %>
-  <h2><%= w.name %></h2>
+  <h2><a href="/workouts/<%= w.id %>/edit"><%= w.name %></a></h2>
   <li>Date logged: <%= w.created_at.strftime("%m-%d-%y") %></li>
   <li>Description: <%= w.description %></li>
-  <li>Instructions: <%= w.instructions %></li>
   <br>
 <% end %>
 </ol>
