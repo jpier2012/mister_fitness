@@ -1,13 +1,13 @@
 class WorkoutsController < ApplicationController
   get "/workouts" do
     redirect_if_not_logged_in
-    #select all workouts for the current user and display them in a list format
-    "Hello world"
+    @workouts = current_user.workouts
+    erb :"workouts/index"
   end
 
   get "/workouts/new" do
     redirect_if_not_logged_in
-    # erb :"workouts/new"
+    erb :"workouts/new"
   end
 
   post "/workouts" do
@@ -20,15 +20,12 @@ class WorkoutsController < ApplicationController
     # erb :"workouts/show"
   end
 
-  get "/workouts/:id/edit"
+  get "/workouts/:id/edit" do
     redirect_if_not_logged_in
     # erb :"workouts/edit"
   end
 
   patch "/workouts/:id" do
-    # uses params[:id] to 
+    # uses params[:id] to update attributes for a workout
   end
-
-  
-
 end
