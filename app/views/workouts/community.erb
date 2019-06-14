@@ -1,0 +1,13 @@
+<h1>Workouts for all of Mister Fitness!</h1>
+<br>
+<ol>
+<% @workouts.each do |w| %>
+  <li><h3><%= w.name %></h3></li>
+  <ul>
+  <li><h4>User: <%= w.user.username %></h4></li>
+  <li>Date logged: <%= w.created_at.strftime("%m-%d-%y") %></li>
+  <li>Description: <%= w.description %></li>
+  </ul>
+  <br>
+<% end %>
+</ol>

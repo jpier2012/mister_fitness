@@ -15,6 +15,12 @@ class WorkoutsController < ApplicationController
     redirect "/workouts"
   end
 
+  get "/workouts/community" do
+    redirect_if_not_logged_in
+    @workouts = Workout.all
+    erb :"workouts/community"
+  end
+
   get "/workouts/:id" do
     redirect_if_not_logged_in
     @workout = current_user.workouts.find_by_id(params[:id])
