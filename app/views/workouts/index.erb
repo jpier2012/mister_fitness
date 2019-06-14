@@ -2,8 +2,12 @@
 <ol>
 <% @workouts.each do |w| %>
   <h2>Name: <%= w.name %></h2>
-  <li>Date logged: <%= w.created_at %></li>
+  <li>Date logged: <%= w.created_at.strftime("%Y-%m-%d") %></li>
   <li>Description: <%= w.description %></li>
   <li>Instructions: <%= w.instructions %></li>
+  <br>
 <% end %>
 </ol>
+<br>
+<br>
+<a href="/workouts/new"><input type="submit" value="Create New Workout"></a>

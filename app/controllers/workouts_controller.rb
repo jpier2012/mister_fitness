@@ -32,6 +32,5 @@ class WorkoutsController < ApplicationController
     workout = current_user.workouts.find_by_id(params[:id])
     workout.update(name: params[:name], description: params[:description], instructions: params[:instructions])
     redirect "/workouts"
-    # uses params[:id] to update attributes for a workout
   end
 end
