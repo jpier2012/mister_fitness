@@ -13,13 +13,13 @@ class WorkoutsController < ApplicationController
   post "/workouts" do
     workout = current_user.workouts.create(name: params[:name], description: params[:description], instructions: params[:instructions])
     redirect "/workouts"
-    # create new workout for current user
   end
 
   get "/workouts/:id" do
     redirect_if_not_logged_in
+    @workout = current_user.workouts.find_by_id(params[:id])
     # show details for specific workout
-    # erb :"workouts/show"
+    erb :"workouts/show"
   end
 
   get "/workouts/:id/edit" do

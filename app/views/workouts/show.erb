@@ -1,0 +1,7 @@
+<h1>Workout detail page</h1>
+<ul>
+  <h2>Name: <%= @workout.name %></h2>
+  <li>Date logged: <%= @workout.created_at.strftime("%Y-%m-%d") %></li>
+  <li>Description: <%= @workout.description %></li>
+  <li>Instructions: <%= @workout.instructions %></li>
+</ul>
