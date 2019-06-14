@@ -1,0 +1,17 @@
+<h1>Exercises index!</h1>
+<h3>Click an exercise name to see the exercise edit page</h3>
+<br>
+<ol>
+<% @exercises.each do |e| %>
+  <li><h2><a href="/exercises/<%= e.id %>/edit"><%= e.name %></a></h2></li>
+  <ul>
+  <li>Date logged: <%= e.created_at.strftime("%m-%d-%y") %></li>
+  <li>Description: <%= e.description %></li>
+  <li>Instructions: <%= e.instructions %></li>
+  <li>Weight: <%= e.weight %></li>
+  <li>Reps: <%= e.reps %></li>
+  <li>Sets: <%= e.sets %></li>
+  </ul>
+  <br>
+<% end %>
+</ol>
