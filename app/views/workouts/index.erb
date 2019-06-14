@@ -1,7 +1,7 @@
 <h1>Workouts page</h1>
 <ol>
 <% @workouts.each do |w| %>
-  <h2>Name: <%= w.name %></h2>
+  <h2>%= w.name %></h2>
   <li>Date logged: <%= w.created_at.strftime("%Y-%m-%d") %></li>
   <li>Description: <%= w.description %></li>
   <li>Instructions: <%= w.instructions %></li>
@@ -10,6 +10,3 @@
 </ol>
 <br>
 <a href="/workouts/new"><input type="submit" value="Create New Workout"></a>
-<br>
-<br>
-<a href="/logout"><input type="submit" value="Logout"></a>
