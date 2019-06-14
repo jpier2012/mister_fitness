@@ -2,11 +2,11 @@
 
 <form action="/exercises" method="POST">
 
-<label for="workout_id">Choose an existing workout</label>
-<select name="workout_id">
+<label for="exercise[workout_id]">Choose an existing workout</label>
+<select name="exercise[workout_id]">
 <option selected="selected"></option>
 <% @workouts.each do |w| %>
-  <option name="<%= w.id %>"><%= w.id %></option>
+  <option value="<%= w.id %>"><%= w.name %></option>
 <% end %>
 </select>
 <br>
