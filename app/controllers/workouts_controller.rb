@@ -11,6 +11,8 @@ class WorkoutsController < ApplicationController
   end
 
   post "/workouts" do
+    workout = current_user.workouts.create(name: params[:name], description: params[:description], instructions: params[:instructions])
+    redirect "/workouts"
     # create new workout for current user
   end
 
