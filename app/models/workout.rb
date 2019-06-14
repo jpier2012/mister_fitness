@@ -1,5 +1,5 @@
 class Workout < ActiveRecord::Base
   belongs_to :user
-  validates :name, uniqueness: true
-  validates :name, :description, :instructions, presence: true
+  has_many :exercises
+  validates :name, presence: true
 end

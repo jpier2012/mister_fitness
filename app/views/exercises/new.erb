@@ -1,0 +1,43 @@
+<h1>New Exercise!</h1>
+
+<form action="/exercises" method="POST">
+
+<label for="workout_id">Choose an existing workout</label>
+<select name="workout_id">
+<option selected="selected"></option>
+<% @workouts.each do |w| %>
+  <option name="<%= w.id %>"><%= w.id %></option>
+<% end %>
+</select>
+<br>
+<br>
+<label for="exercise[name]">Enter a name: </label>
+<input type="text" name="exercise[name]">
+<br>
+<br>
+<label for="exercise[description]">Enter a description: </label>
+<textarea name="exercise[description]"></textarea>
+<br>
+<br>
+<label for="exercise[instructions]">Enter instructions: </label>
+<textarea name="exercise[instructions]"></textarea>
+<br>
+<br>
+<label for="exercise[weight]">Enter a weight: </label>
+<input type="text" name="exercise[weight]">
+<br>
+<br>
+<label for="exercise[reps]">Enter reps: </label>
+<textarea name="exercise[reps]"></textarea>
+<br>
+<br>
+<label for="exercise[sets]">Enter sets: </label>
+<textarea name="exercise[sets]"></textarea>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="Create Exercise!">
+</form>
+<br>
+<a href="/exercises"><input type="submit" value="Go Back to Exercises Index"></a>
