@@ -17,7 +17,7 @@ class ExercisesController < ApplicationController
     exercise = workout.exercises.build(params[:exercise])
     exercise.user = current_user
     exercise.save
-    redirect "/exercises"
+    redirect "/workouts/#{workout.id}"
   end
 
   get "/exercises/:id" do

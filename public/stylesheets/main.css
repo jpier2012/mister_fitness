@@ -1,5 +1,4 @@
-@media screen {
-  /* --- Reset Styles --- */
+/* --- Reset Styles --- */
   * {
     margin: 0;
     padding: 0;
@@ -82,37 +81,7 @@
     margin-top: 20px;
     padding-top: 20px;
   }
-}
 
-@media screen and (max-width: 600px) {
-  .wrapper {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    width: auto;
+  #tab {
+    margin-left: 40px;
   }
-
-  .content, .sidebar {
-    float: none;
-    width: 100%;
-  }
-
-  .sidebar {
-    background: transparent;
-    border: none;
-    border-top: 2px solid #ccc;
-    padding: 0;
-  }
-
-  h1 {
-    border-bottom: 2px solid #ccc;
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  h2 {
-    border-bottom: 2px solid #ccc;
-    font-size: 18px;
-    line-height: 24px;
-  }
-}

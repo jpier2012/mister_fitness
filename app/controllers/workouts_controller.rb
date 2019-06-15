@@ -24,6 +24,7 @@ class WorkoutsController < ApplicationController
   get "/workouts/:id" do
     redirect_if_not_logged_in
     @workout = current_user.workouts.find_by_id(params[:id])
+    redirect "/workouts" if !@workout
     # show details for specific workout
     erb :"workouts/show"
   end
