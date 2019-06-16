@@ -86,7 +86,7 @@
 
  table {
     border-color: grey;
-    width: 100%; 
+    width: 100%;
   }
 
   table caption {
@@ -111,6 +111,11 @@
     text-align: center;
     border-bottom: 1px solid #cecfd5;
     padding: 10px 15px;
+  }
+
+  input#number {
+    resize:horizontal;
+    width: 40px;
   }
 
   input[type="submit"] {

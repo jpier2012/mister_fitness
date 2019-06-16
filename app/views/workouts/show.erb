@@ -27,13 +27,15 @@
 </form>
 <br>
 <h2>Exercises</h2>
-<p>
-
+<br>
+<form action="/exercises" method="POST">
 <table id="exercises">
   <tbody>
     <tr>
       <th scope="col">No.</th>
       <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Instructions</th>
       <th scope="col">Weight</th>
       <th scope="col">Reps</th>
       <th scope="col">Sets</th>
@@ -42,20 +44,27 @@
     <tr>
       <td></td>
       <td><%= e.name %></td>
+      <td><%= e.description %></td>
+      <td><%= e.instructions %></td>
       <td><%= e.weight %></td>
       <td><%= e.reps %></td>
       <td><%= e.sets %></td>
     </tr>
     <% end %>
+    <tr>
+        <td></td>
+        <td><input type="text" name="exercise[name]"></td>
+        <td><textarea name="exercise[description]">Description...</textarea></td>
+        <td><textarea name="exercise[instructions]">Instructions...</textarea></td>
+        <td><input id="number" type="text" name="exercise[weight]"></td>
+        <td><input id="number" type="text" name="exercise[reps]"></td>
+        <td><input id="number" type="text" name="exercise[sets]"></td>
+    </tr>
   </tbody>
 </table>
-
 <br>
-<br>
-<a href="/exercises/new"><input type="submit" value="Add Exercises to Workout!"></a>
-<br>
-<br>
-<a href="/workouts/<%= @workout.id %>/edit"><input type="submit" value="Update Workout Details!"></a>
-<br>
+<input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
+<input type="submit" value="Add Exercise to Workout!">
+</form>
 <br>
 <a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
