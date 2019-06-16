@@ -1,29 +1,61 @@
 <h1>Workout detail page</h1>
 <br>
+<h2><%= @workout.name %> (<%= @workout.created_at.strftime("%Y-%m-%d") %>)</h2>
 <form action="/workouts/<%= @workout.id %>" method="POST">
 <input type="hidden" name="_method" value="PATCH">
-<label for="name">Update the name: </label>
-<input type="text" name="name" value="<%= @workout.name %>">
-<br>
-<br>
-<label for="description">Update the description: </label>
-<textarea name="description"><%= @workout.description %></textarea>
-<br>
-<br>
-<label for="instructions">Update the instructions: </label>
-<textarea name="instructions"><%= @workout.instructions %></textarea>
-<br>
+
+<table>
+  <caption>Edit workout attributes below</caption>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Instructions</th>
+    </tr>
+    <tr>
+      <td><input type="text" name="name" value="<%= @workout.name %>"></td>
+      <td><textarea name="description"><%= @workout.description %></textarea></td>
+      <td><textarea name="instructions"><%= @workout.instructions %></textarea></td>
+    </tr>
+  </tbody>
+</table>
 <br>
 <br>
 <input type="submit" value="Update Workout Details!">
+<br>
+<br>
 </form>
+<br>
+<h2>Exercises</h2>
+<p>
+
+<table id="exercises">
+  <tbody>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Reps</th>
+      <th scope="col">Sets</th>
+    </tr>
+    <% @workout.exercises.each do |e| %>
+    <tr>
+      <td></td>
+      <td><%= e.name %></td>
+      <td><%= e.weight %></td>
+      <td><%= e.reps %></td>
+      <td><%= e.sets %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 <br>
 <a href="/exercises/new"><input type="submit" value="Add Exercises to Workout!"></a>
 <br>
 <br>
+<a href="/workouts/<%= @workout.id %>/edit"><input type="submit" value="Update Workout Details!"></a>
 <br>
-<form action="/workouts/<%=@workout.id%>/delete" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Workout!">
-</form>
+<br>
+<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
