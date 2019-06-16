@@ -1,24 +1,37 @@
 <h1>Workout detail page</h1>
+<br>
 <ul>
-  <h2>Name: <%= @workout.name %></h2>
-  <li>Date logged: <%= @workout.created_at.strftime("%Y-%m-%d") %></li>
-  <li>Description: <%= @workout.description %></li>
-  <li>Instructions: <%= @workout.instructions %></li>
+  <h2><%= @workout.name %></h2>
+  <li id="tab">Date logged: <%= @workout.created_at.strftime("%Y-%m-%d") %></li>
+  <li id="tab">Description: <%= @workout.description %></li>
+  <li id="tab">Instructions: <%= @workout.instructions %></li>
 </ul>
 <br>
 <h2>Exercises</h2>
 <p>
-<ol>
+
+<table border="1">
+<tbody>
+<tr>
+<th scope="col">No.</th>
+<th scope="col">Name</th>
+<th scope="col">Weight</th>
+<th scope="col">Reps</th>
+<th scope="col">Sets</th>
+</tr>
+
 <% @workout.exercises.each do |e| %>
-  <li>Name: <%= e.name %></li>
-<ul>
-  <li>Reps: <%= e.reps %></li>
-  <li>Sets: <%= e.sets %></li>
-</ul>
-<br>
+<tr>
+  <td></td>
+  <td><%= e.name %></td>
+  <td><%= e.weight %></td>
+  <td><%= e.reps %></td>
+  <td><%= e.sets %></td>
+</tr>
 <% end %>
-</ol>
-</p>
+</tbody>
+</table>
+
 <br>
 <br>
 <a href="/exercises/new"><input type="submit" value="Add Exercises to Workout!"></a>
