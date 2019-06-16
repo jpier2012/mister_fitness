@@ -16,8 +16,8 @@ class WorkoutsController < ApplicationController
       workout = old_workout.dup
       workout.save
       old_workout.exercises.each do |e|
-        new_exercise = workout.exercises.dup
-        new_exercise.user_id = current_user.id
+        new_exercise = e.dup
+        new_exercise.workout_id = workout.id
         new_exercise.save
       end
     else
