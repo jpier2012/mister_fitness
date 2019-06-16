@@ -139,7 +139,7 @@
     background-color: lightseagreen;
     border: none;
     color: white;
-    padding: 12px 12px;
+    padding: 6px 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -148,7 +148,6 @@
 
   input[value="Logout"] {
     background-color: black;
-    padding: 8px 8px;
   }
 
   input#edit, input#add, input#delete {

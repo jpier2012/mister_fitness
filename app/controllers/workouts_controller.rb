@@ -40,6 +40,7 @@ class WorkoutsController < ApplicationController
     redirect_if_not_logged_in
     error_check
     @workout = current_user.workouts.find_by_id(params[:id])
+    @exercises = Exercise.all.uniq
     redirect "/workouts" if !@workout
     erb :"workouts/show"
   end
@@ -60,7 +61,10 @@ class WorkoutsController < ApplicationController
 
   delete "/workouts/:id/delete" do
     workout = current_user.workouts.find_by_id(params[:id])
-    workout.delete if workout
+    if workout
+      workout.exercises.delete_all
+      workout.delete
+    end        
     redirect "/workouts"
   end
 end

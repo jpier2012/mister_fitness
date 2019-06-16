@@ -37,6 +37,7 @@
       <th scope="col">Reps</th>
       <th scope="col">Sets</th>
       <th></th>
+      <th></th>
     </tr>
     <% @workout.exercises.each do |e| %>
     <tr>
@@ -48,6 +49,10 @@
       <td><%= e.reps %></td>
       <td><%= e.sets %></td>
       <td><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="submit" value="Edit"></a></td>
+      <form action="/exercises/<%= e.id %>/delete" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <td><input id="delete" type="submit" value="Delete"></td>
+      </form>
     </tr>
     <% end %>
     <tr>
@@ -60,6 +65,7 @@
         <td><input id="number" type="text" name="exercise[reps]"></td>
         <td><input id="number" type="text" name="exercise[sets]"></td>
         <td><input id="add" type="submit" value="Add"></td>
+        <td></td>
         <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
       </form>
     </tr>
