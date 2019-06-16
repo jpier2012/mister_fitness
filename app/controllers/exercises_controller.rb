@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
 
   get "/exercises" do
     redirect_if_not_logged_in
-    @exercises = current_user.exercises
+    @exercises = Exercise.all
     erb :"exercises/index"
   end
 
@@ -35,7 +35,7 @@ class ExercisesController < ApplicationController
   get "/exercises/:id/edit" do
     redirect_if_not_logged_in
     @workouts = current_user.workouts
-    @exercise = current_user.exercises.find_by_id(params[:id])
+    @exercise = Exercise.find_by_id(params[:id])
     redirect "/exercises" if !@exercise
     erb :"exercises/edit"
   end
@@ -47,9 +47,12 @@ class ExercisesController < ApplicationController
   end
 
   delete "/exercises/:id/delete" do
-    exercise = current_user.exercises.find_by_id(params[:id])
+    exercise = Exercise.find_by_id(params[:id])
     workout_id = exercise.workout_id
     exercise.delete if exercise
+    if !workout_id
+      redirect "/exercises"
+    end
     redirect "/workouts/#{ workout_id }"
   end
 end

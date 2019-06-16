@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  get "/users" do
+    @users = User.all
+    erb :"users/index"
+  end
+
   get "/signup" do
     redirect "/workouts" if logged_in?
     error_check

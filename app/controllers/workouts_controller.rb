@@ -18,7 +18,7 @@ class WorkoutsController < ApplicationController
       workout.save
       old_workout.exercises.each do |e|
         new_exercise = e.dup
-        new_exercise.workout_id = workout.id
+        new_exercise.workout_id = e.workout_id
         new_exercise.save
       end
     else
@@ -45,16 +45,16 @@ class WorkoutsController < ApplicationController
     redirect_if_not_logged_in
     error_check
     @workout = current_user.workouts.find_by_id(params[:id])
-    @exercises = Exercise.all.uniq
     redirect "/workouts" if !@workout
-    erb :"workouts/show"
+    @exercises = Exercise.all
+    erb :"workouts/show_edit"
   end
 
   get "/workouts/:id/edit" do
     redirect_if_not_logged_in
     @workout = current_user.workouts.find_by_id(params[:id])
     redirect "/workouts" if !@workout
-    erb :"workouts/edit"
+    erb :"workouts/show_edit"
   end
 
   patch "/workouts/:id" do
@@ -67,7 +67,7 @@ class WorkoutsController < ApplicationController
   delete "/workouts/:id/delete" do
     workout = current_user.workouts.find_by_id(params[:id])
     if workout
-      workout.exercises.delete_all
+      Exercise.where(workout_id: workout.id).delete_all
       workout.delete
     end        
     redirect "/workouts"

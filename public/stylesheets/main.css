@@ -28,18 +28,12 @@
   }
 
   h1 {
-    background-color: lightseagreen;
-    color: white;
-    text-align: center;
     font-size: 36px;
     line-height: 54px;
     font-style: italic;
   }
 
   h2 {
-    background-color: lightseagreen;
-    color: white;
-    text-align: center;
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
@@ -47,12 +41,15 @@
   }
 
   h3 {
-    background-color: lightseagreen;
-    color: white;
-    text-align: center;
     border-bottom: 2px solid #ccc;
     font-size: 18px;
     line-height: 36px;
+  }
+
+  h1, h2, h3, h4 {
+    background-color: lightseagreen;
+    color: white;
+    text-align: center;
   }
 
   .main {
