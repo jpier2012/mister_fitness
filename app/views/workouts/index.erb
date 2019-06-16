@@ -8,16 +8,29 @@
     <th scope="col">Date</th>
     <th scope="col">Description</th>
     <th scope="col">Exercises</th>
-    <th></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
   </tr>
 <% @workouts.each do |w| %>
-  <tr>
-    <td><a href="/workouts/<%= w.id %>"><%= w.name %></a></td>
-    <td><%= w.created_at.strftime("%m-%d-%y") %></td>
-    <td><%= w.description %></td>
-    <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
-    <td><a href="/workouts/new"><input type="submit" value="Clone"></a></td>
-  </tr>
+    <tr>
+      <td><%= w.name %></td>
+      <td><%= w.created_at.strftime("%m-%d-%y") %></td>
+      <td><%= w.description %></td>
+      <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
+
+      <td><a href="/workouts/<%= w.id %>"><input id="edit" type="submit" value="Edit"></a></td>
+
+      <form action="/workouts" method="POST">
+      <input type="hidden" name="clone_id" value="<%= w.id %>">
+      <td><input id="edit" type="submit" value="Clone"></td>
+      </form>
+
+      <form action="/workouts/<%= w.id %>/delete" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <td><input id="delete" type="submit" value="Delete"></td>
+      </form>
+    </tr>
 <% end %>
 </table>
 <br>

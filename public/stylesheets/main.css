@@ -151,7 +151,8 @@
     padding: 8px 8px;
   }
 
-  input#edit, input#add {
+  input#edit, input#add, input#delete {
+    font-size: 12px;
     padding: 5px 5px;
   }
 

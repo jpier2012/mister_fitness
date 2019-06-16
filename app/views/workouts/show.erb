@@ -66,7 +66,11 @@
   </tbody>
 </table>
 <br>
-
+<br>
+<form action="/workouts/<%= @workout.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Workout!">
+</form>
 <br>
 <br>
 <a href="/workouts"><input type="submit" value="Return to Workout Index"></a>

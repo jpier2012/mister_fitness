@@ -11,11 +11,22 @@ class WorkoutsController < ApplicationController
   end
 
   post "/workouts" do
-    workout = current_user.workouts.create(params[:workout])
-    exercise = workout.exercises.build(params[:exercise])
-    exercise.user = current_user
-    exercise.save
-    session[:errors] = exercise.errors.to_a if exercise.errors.any?
+    if params[:clone_id]
+      old_workout = Workout.find_by_id(params[:clone_id])
+      workout = old_workout.dup
+      workout.save
+      old_workout.exercises.each do |e|
+        new_exercise = workout.exercises.dup
+        new_exercise.user_id = current_user.id
+        new_exercise.save
+      end
+    else
+      workout = current_user.workouts.create(params[:workout])
+      exercise = workout.exercises.build(params[:exercise])
+      exercise.user = current_user
+      exercise.save
+      session[:errors] = exercise.errors.to_a if exercise.errors.any?
+    end
     redirect "/workouts/#{ workout.id }"
   end
 
