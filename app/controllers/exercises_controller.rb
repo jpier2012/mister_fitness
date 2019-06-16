@@ -43,7 +43,8 @@ class ExercisesController < ApplicationController
 
   delete "/exercises/:id/delete" do
     exercise = current_user.exercises.find_by_id(params[:id])
+    workout_id = exercise.workout_id
     exercise.delete if exercise
-    redirect "/exercises"
+    redirect "/workouts/#{ workout_id }"
   end
 end

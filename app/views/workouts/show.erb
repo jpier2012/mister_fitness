@@ -2,32 +2,31 @@
 <br>
 <h2><%= @workout.name %> (<%= @workout.created_at.strftime("%Y-%m-%d") %>)</h2>
 <form action="/workouts/<%= @workout.id %>" method="POST">
-<input type="hidden" name="_method" value="PATCH">
-<table>
-  <caption>Edit workout attributes below</caption>
-  <tbody>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Instructions</th>
-    </tr>
-    <tr>
-      <td><input type="text" name="workout[name]" value="<%= @workout.name %>"></td>
-      <td><textarea name="workout[description]"><%= @workout.description %></textarea></td>
-      <td><textarea name="workout[instructions]"><%= @workout.instructions %></textarea></td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<br>
-<input type="submit" value="Update Workout Details!">
-<br>
-<br>
+  <input type="hidden" name="_method" value="PATCH">
+  <table>
+    <caption>Edit workout attributes below</caption>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Instructions</th>
+      </tr>
+      <tr>
+        <td><input type="text" name="workout[name]" value="<%= @workout.name %>"></td>
+        <td><textarea name="workout[description]"><%= @workout.description %></textarea></td>
+        <td><textarea name="workout[instructions]"><%= @workout.instructions %></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <input type="submit" value="Update Workout Details!">
 </form>
+<br>
+<br>
 <br>
 <h2>Exercises</h2>
 <br>
-<form action="/exercises" method="POST">
 <table id="exercises">
   <tbody>
     <tr>
@@ -38,6 +37,7 @@
       <th scope="col">Total Weight</th>
       <th scope="col">Reps</th>
       <th scope="col">Sets</th>
+      <th></th>
     </tr>
     <% @workout.exercises.each do |e| %>
     <tr>
@@ -48,22 +48,26 @@
       <td><%= e.weight %></td>
       <td><%= e.reps %></td>
       <td><%= e.sets %></td>
+      <td><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="submit" value="Edit"></a></td>
     </tr>
     <% end %>
     <tr>
+      <form action="/exercises" method="POST">
         <td></td>
         <td><input type="text" name="exercise[name]" placeholder="Create a new exercise..."></td>
-        <td><textarea name="exercise[description]" placeholder="Description..."></textarea></td>
-        <td><textarea name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
+        <td><textarea rows="1" name="exercise[description]" placeholder="Description..."></textarea></td>
+        <td><textarea rows="1"name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
         <td><input id="number" type="text" name="exercise[weight]"></td>
         <td><input id="number" type="text" name="exercise[reps]"></td>
         <td><input id="number" type="text" name="exercise[sets]"></td>
+        <td><input id="add" type="submit" value="Add"></td>
+        <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
+      </form>
     </tr>
   </tbody>
 </table>
 <br>
-<input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
-<input type="submit" value="Add Exercise to Workout!">
-</form>
+
+<br>
 <br>
 <a href="/workouts"><input type="submit" value="Return to Workout Index"></a>

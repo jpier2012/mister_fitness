@@ -114,24 +114,22 @@
   }
 
   input#number {
-    resize:horizontal;
+    resize: horizontal;
     width: 40px;
   }
 
-  td textarea {
+  textarea {
     font-family: Sans-Serif;
     resize: auto;
-    width: 100%;
-    height: 100%
   }
 
   textarea:active {
-    width: auto;   
+    width: auto;
   }
 
   textarea:focus {
-    width: 250px;
-    height: 100px;
+    width: 200px;
+    height: 80px;
   }
 
   input[type="submit"] {
@@ -148,6 +146,10 @@
   input[value="Logout"] {
     background-color: black;
     padding: 8px 8px;
+  }
+
+  input#edit, input#add {
+    padding: 5px 5px;
   }
 
   .alert {

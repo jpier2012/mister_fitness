@@ -1,70 +1,45 @@
-<h1>Workout detail page</h1>
-<br>
-<h2><%= @workout.name %> (<%= @workout.created_at.strftime("%Y-%m-%d") %>)</h2>
-<form action="/workouts/<%= @workout.id %>" method="POST">
+<h1>Edit Exercise!</h1>
+
+<form action="/exercises/<%= @exercise.id %>" method="POST">
 <input type="hidden" name="_method" value="PATCH">
 
-<table>
-  <caption>Edit workout attributes below</caption>
-  <tbody>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Instructions</th>
-    </tr>
-    <tr>
-      <td><input type="text" name="name" value="<%= @workout.name %>"></td>
-      <td><textarea name="description"><%= @workout.description %></textarea></td>
-      <td><textarea name="instructions"><%= @workout.instructions %></textarea></td>
-    </tr>
-  </tbody>
-</table>
+<label>Choose an existing workout</label>
+<select name="exercise[workout_id]">
+<option selected="selected" value="<%= @exercise.workout.id %>"><%= @exercise.workout.name %></option>
+<% @workouts.each do |w| %>
+  <option value="<%= w.id %>"><%= w.name %></option>
+<% end %>
+</select>
+
 <br>
 <br>
-<input type="submit" value="Update Workout Details!">
+<label for="exercise[name]">Update name: </label>
+<input type="text" name="exercise[name]" value="<%= @exercise.name %>">
 <br>
 <br>
+<label for="exercise[description]">Enter a description: </label>
+<textarea name="exercise[description]"><%= @exercise.description %></textarea>
+<br>
+<br>
+<label for="exercise[instructions]">Enter instructions: </label>
+<textarea name="exercise[instructions]"><%= @exercise.instructions %></textarea>
+<br>
+<br>
+<label for="exercise[weight]">Enter a weight: </label>
+<input type="text" name="exercise[weight]" value="<%= @exercise.weight %>">
+<br>
+<br>
+<label for="exercise[reps]">Enter reps: </label>
+<input type="text" name="exercise[reps]" value="<%= @exercise.reps %>">
+<br>
+<br>
+<label for="exercise[sets]">Enter sets: </label>
+<input type="text" name="exercise[sets]" value="<%= @exercise.sets %>">
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="Update Exercise!">
 </form>
 <br>
-<h2>Exercises</h2>
-<br>
-<form action="/exercises" method="POST">
-<table id="exercises">
-  <tbody>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Name</th>
-      <th scope="col">Weight</th>
-      <th scope="col">Reps</th>
-      <th scope="col">Sets</th>
-    </tr>
-    <% @workout.exercises.each do |e| %>
-    <tr>
-      <td></td>
-      <td><%= e.name %></td>
-      <td><%= e.weight %></td>
-      <td><%= e.reps %></td>
-      <td><%= e.sets %></td>
-    </tr>
-    <% end %>
-    <tr>
-        <td><input type="text" name="exercise[name]">Name...</input></td>
-        <td><textarea name="exercise[description]">Description...</textarea></td>
-        <td><textarea name="exercise[instructions]">Instructions...</textarea></td>
-        <td><input type="text" name="exercise[weight]">Weight...</input></td>
-        <td><input type="text" name="exercise[reps]">Reps...</input></td>
-        <td><input type="text" name="exercise[sets]">Sets...</input></td>
-    </tr>
-  </tbody>
-</table>
-<input type="submit" value="Create Exercise!">
-</form>
-<br><td>
-<br>
-<a href="/exercises/new"><input type="submit" value="Add Exercises to Workout!"></a>
-<br>
-<br>
-<a href="/workouts/<%= @workout.id %>/edit"><input type="submit" value="Update Workout Details!"></a>
-<br>
-<br>
-<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
+<a href="/exercises"><input type="submit" value="Go Back to Exercises Index"></a>

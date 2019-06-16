@@ -38,8 +38,13 @@
 <br>
 <br>
 <br>
-<br>
 <input type="submit" value="Update Exercise!">
 </form>
+<br>
+<form action="/exercises/<%= @exercise.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input id="delete" type="submit" value="Delete Exercise!">
+</form>
+<br>
 <br>
 <a href="/exercises"><input type="submit" value="Go Back to Exercises Index"></a>
