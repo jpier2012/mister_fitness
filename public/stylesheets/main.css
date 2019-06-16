@@ -49,10 +49,6 @@
     line-height: 36px;
   }
 
-  p {
-    margin-bottom: 18px;
-  }
-
   .main {
     overflow: hidden;
   }
@@ -90,18 +86,24 @@
 
  table {
     border-color: grey;
-    counter-reset: rowNumber;
     width: 100%; 
   }
 
-  table tr:not(:first-child) {
-      counter-increment: rowNumber;
+  table caption {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #cecfd5;
   }
 
-  table tr td:first-child::before {
-      content: counter(rowNumber);
-      min-width: 1em;
-      margin-right: 0.5em;
+  table#exercises tr:not(:first-child) {
+    counter-increment: rowNumber;
+  }
+
+  table#exercises tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
   }
 
   th, 
@@ -109,10 +111,6 @@
     text-align: center;
     border-bottom: 1px solid #cecfd5;
     padding: 10px 15px;
-  }
-
-  tfoot tr:last-child td {
-    border-bottom: 0;
   }
 
   input[type="submit"] {
