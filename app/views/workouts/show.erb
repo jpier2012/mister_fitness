@@ -2,30 +2,30 @@
 <br>
 <form action="/workouts/<%= @workout.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
+  <h2>Edit workout attributes</h2>
   <table id="workout_detail">
-    <caption>Edit workout attributes below</caption>
     <tbody>
-      <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Instructions</th>
+        <th></th>
       </tr>
       <tr>
         <td><input type="text" name="workout[name]" value="<%= @workout.name %>"></td>
-        <td><textarea rows="1" name="workout[description]"><%= @workout.description %></textarea></td>
-        <td><textarea rows="1" name="workout[instructions]"><%= @workout.instructions %></textarea></td>
+        <td><textarea rows="5" cols="25" name="workout[description]"><%= @workout.description %></textarea></td>
+        <td><textarea rows="5" cols="25" name="workout[instructions]"><%= @workout.instructions %></textarea></td>
+        <td><input type="submit" value="Update!"></td>
       </tr>
     </tbody>
   </table>
   <br>
   <br>
-  <input type="submit" value="Update Workout Details!">
+  
 </form>
 <br>
 <br>
 <br>
-<h2>Exercises</h2>
-<br>
+<h2>Edit exercises</h2>
 <table id="exercises">
   <tbody>
     <tr>
