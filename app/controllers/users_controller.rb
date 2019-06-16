@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   get "/signup" do
     redirect "/workouts" if logged_in?
-    @errors = session[:errors] if !session[:errors].empty?
+    error_check
     erb :"users/signup"
   end
 
