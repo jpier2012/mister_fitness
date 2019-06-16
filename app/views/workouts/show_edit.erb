@@ -19,11 +19,7 @@
       </tr>
     </tbody>
   </table>
-  <br>
-  <br>
 </form>
-<br>
-<br>
 <br>
 <h2>Edit exercises</h2>
 <table id="exercises">
@@ -50,15 +46,15 @@
       <td><%= e.reps %></td>
       <td><%= e.sets %></td>
       <td><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="submit" value="Edit"></a></td>
-      
-      <form action="/exercises/<%= e.id %>/delete" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <td><input id="delete" type="submit" value="Delete"></td>
-      </form>
 
       <form action="/exercises" method="POST">
       <input type="hidden" name="clone_id" value="<%= e.id %>">
       <td><input id="edit" type="submit" value="Clone"></td>
+      </form>
+
+      <form action="/exercises/<%= e.id %>/delete" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <td><input id="delete" type="submit" value="Delete"></td>
       </form>
     </tr>
     <% end %>
