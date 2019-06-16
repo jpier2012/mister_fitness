@@ -15,7 +15,19 @@
   </head>
   <body>
     <div class="wrapper">
-
+    <% if @errors %>
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong>Woops!</strong> The following errors have occurred:
+      <br>
+      <br>
+      <ul>
+      <% @errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
         <%= yield %>
 
       <footer class="branding">

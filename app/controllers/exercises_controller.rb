@@ -17,6 +17,7 @@ class ExercisesController < ApplicationController
     exercise = workout.exercises.build(params[:exercise])
     exercise.user = current_user
     exercise.save
+    session[:errors] = exercise.errors.to_a if exercise.errors.any?
     redirect "/workouts/#{workout.id}"
   end
 

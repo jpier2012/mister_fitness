@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
+
+
   get "/login" do
+    error_check
     erb :"sessions/login"
   end
 
@@ -8,7 +11,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/workouts"
+    elsif user
+      session[:errors] = ["Please enter a valid password"]
+      redirect "/login"
     else
+      session[:errors] = ["Please enter a valid username"]
       redirect "/login"
     end
   end

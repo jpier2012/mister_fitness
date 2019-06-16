@@ -23,6 +23,7 @@ class WorkoutsController < ApplicationController
 
   get "/workouts/:id" do
     redirect_if_not_logged_in
+    error_check
     @workout = current_user.workouts.find_by_id(params[:id])
     redirect "/workouts" if !@workout
     erb :"workouts/show"
@@ -37,7 +38,8 @@ class WorkoutsController < ApplicationController
 
   patch "/workouts/:id" do
     workout = current_user.workouts.find_by_id(params[:id])
-    workout.update(name: params[:name], description: params[:description], instructions: params[:instructions])
+    workout.update(params[:workout])
+    session[:errors] = workout.errors.to_a if workout.errors.any?
     redirect "/workouts/#{workout.id}"
   end
 

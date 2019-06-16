@@ -118,6 +118,11 @@
     width: 40px;
   }
 
+  textarea {
+    rows: 40;
+    cols: 40;
+  }
+
   input[type="submit"] {
     background-color: lightseagreen;
     border: none;
@@ -133,4 +138,28 @@
     background-color: black;
     padding: 8px 8px;
   }
-                
+
+  .alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+
+  li {
+    margin-left: 20px;
+  }
