@@ -2,17 +2,24 @@
 <br>
 <h2>Click a workout name to see the workout detail page</h2>
 <br>
-<ol>
+<table id="workouts">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Date</th>
+    <th scope="col">Description</th>
+    <th scope="col">Exercises</th>
+    <th></th>
+  </tr>
 <% @workouts.each do |w| %>
-  <li><h3><a href="/workouts/<%= w.id %>"><%= w.name %></a></h3></li>
-  <br>
-  <ul>
-  <li id="tab">Date logged: <%= w.created_at.strftime("%m-%d-%y") %></li>
-  <li id="tab">Description: <%= w.description %></li>
-  </ul>
-  <br>
+  <tr>
+    <td><a href="/workouts/<%= w.id %>"><%= w.name %></a></td>
+    <td><%= w.created_at.strftime("%m-%d-%y") %></td>
+    <td><%= w.description %></td>
+    <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
+    <td><a href="/workouts/new"><input type="submit" value="Clone"></a></td>
+  </tr>
 <% end %>
-</ol>
+</table>
 <br>
 <a href="/workouts/new"><input type="submit" value="Create New Workout"></a>
 <br>

@@ -35,7 +35,6 @@
 
   h2 {
     text-align: center;
-    border-top: 2px solid #ccc;
     border-bottom: 2px solid #ccc;
     font-size: 24px;
     line-height: 36px;
@@ -106,11 +105,15 @@
     margin-right: 0.5em;
   }
 
-  th, 
-  td  {
+  th, td {
     text-align: center;
     border-bottom: 1px solid #cecfd5;
     padding: 10px 10px;
+    max-width: 400px;
+  }
+
+  table#workout_detail th, td {
+    border-bottom: none;
   }
 
   input#number {

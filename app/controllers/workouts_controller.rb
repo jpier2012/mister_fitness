@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
   get "/workouts" do
     redirect_if_not_logged_in
-    @workouts = current_user.workouts
+    @workouts = current_user.workouts.order(created_at: :desc)
     erb :"workouts/index"
   end
 
@@ -11,8 +11,12 @@ class WorkoutsController < ApplicationController
   end
 
   post "/workouts" do
-    workout = current_user.workouts.create(name: params[:name], description: params[:description], instructions: params[:instructions])
-    redirect "/workouts"
+    workout = current_user.workouts.create(params[:workout])
+    exercise = workout.exercises.build(params[:exercise])
+    exercise.user = current_user
+    exercise.save
+    session[:errors] = exercise.errors.to_a if exercise.errors.any?
+    redirect "/workouts/#{ workout.id }"
   end
 
   get "/workouts/community" do

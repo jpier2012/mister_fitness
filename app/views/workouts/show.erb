@@ -1,9 +1,8 @@
-<h1>Workout detail page</h1>
+<h1><%= @workout.name %> (<%= @workout.created_at.strftime("%Y-%m-%d") %>)</h1>
 <br>
-<h2><%= @workout.name %> (<%= @workout.created_at.strftime("%Y-%m-%d") %>)</h2>
 <form action="/workouts/<%= @workout.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <table>
+  <table id="workout_detail">
     <caption>Edit workout attributes below</caption>
     <tbody>
       <tr>
@@ -13,8 +12,8 @@
       </tr>
       <tr>
         <td><input type="text" name="workout[name]" value="<%= @workout.name %>"></td>
-        <td><textarea name="workout[description]"><%= @workout.description %></textarea></td>
-        <td><textarea name="workout[instructions]"><%= @workout.instructions %></textarea></td>
+        <td><textarea rows="1" name="workout[description]"><%= @workout.description %></textarea></td>
+        <td><textarea rows="1" name="workout[instructions]"><%= @workout.instructions %></textarea></td>
       </tr>
     </tbody>
   </table>

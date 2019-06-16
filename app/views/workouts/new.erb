@@ -1,21 +1,52 @@
 <h1>New Workout!</h1>
-
+<br>
 <form action="/workouts" method="POST">
-<label for="name">Enter a name: </label>
-<input type="text" name="name">
+  <table id="workout_detail">
+    <caption>Add workout attributes below</caption>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Instructions</th>
+      </tr>
+      <tr>
+        <td><input type="text" name="workout[name]" placeholder="Name..."></td>
+        <td><textarea rows="1" name="workout[description]" placeholder="Description..."></textarea></td>
+        <td><textarea rows="1" name="workout[instructions]" placeholder="Instructions..."></textarea></td>
+      </tr>
+    </tbody>
+  </table>
 <br>
+<h2>Exercises</h2>
 <br>
-<label for="description">Enter a description: </label>
-<textarea name="description"></textarea>
-<br>
-<br>
-<label for="instructions">Enter instructions: </label>
-<textarea name="instructions"></textarea>
-<br>
-<br>
-<br>
+<table id="exercises">
+<caption>Add your first exercise!</caption>
+  <tbody>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Instructions</th>
+      <th scope="col">Total Weight</th>
+      <th scope="col">Reps</th>
+      <th scope="col">Sets</th>
+    </tr>
+    <tr>
+      <form action="/exercises" method="POST">
+        <td></td>
+        <td><input type="text" name="exercise[name]" placeholder="Create a new exercise..."></td>
+        <td><textarea rows="1" name="exercise[description]" placeholder="Description..."></textarea></td>
+        <td><textarea rows="1"name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
+        <td><input id="number" type="text" name="exercise[weight]"></td>
+        <td><input id="number" type="text" name="exercise[reps]"></td>
+        <td><input id="number" type="text" name="exercise[sets]"></td>
+        </form>
+    </tr>
+  </tbody>
+</table>
 <br>
 <input type="submit" value="Create Workout!">
 </form>
 <br>
-<a href="/workouts"><input type="submit" value="Go Back to Workouts Index"></a>
+<br>
+<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
