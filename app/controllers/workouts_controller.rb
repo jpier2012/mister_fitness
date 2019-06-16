@@ -7,6 +7,7 @@ class WorkoutsController < ApplicationController
 
   get "/workouts/new" do
     redirect_if_not_logged_in
+    error_check
     erb :"workouts/new"
   end
 
@@ -22,10 +23,14 @@ class WorkoutsController < ApplicationController
       end
     else
       workout = current_user.workouts.create(params[:workout])
+      if workout.invalid?
+        log_errors(workout)
+        redirect "/workouts/new"
+      end
       exercise = workout.exercises.build(params[:exercise])
       exercise.user = current_user
       exercise.save
-      session[:errors] = exercise.errors.to_a if exercise.errors.any?
+      log_errors(exercise)
     end
     redirect "/workouts/#{ workout.id }"
   end
@@ -55,7 +60,7 @@ class WorkoutsController < ApplicationController
   patch "/workouts/:id" do
     workout = current_user.workouts.find_by_id(params[:id])
     workout.update(params[:workout])
-    session[:errors] = workout.errors.to_a if workout.errors.any?
+    log_errors(workout)
     redirect "/workouts/#{workout.id}"
   end
 

@@ -22,7 +22,7 @@ class ExercisesController < ApplicationController
       exercise.user = current_user
     end
     exercise.save
-    session[:errors] = exercise.errors.to_a if exercise.errors.any?
+    log_errors(exercise)
     redirect "/workouts/#{ exercise.workout_id }"
   end
 
