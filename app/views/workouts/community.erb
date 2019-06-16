@@ -1,19 +1,33 @@
-<h1>Workouts for all of Mister Fitness!</h1>
+<h2>Workouts from All of Mister Fitness!</h2>
 <br>
-<ol>
+<table id="workouts">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Date</th>
+    <th scope="col">Description</th>
+    <th scope="col">Exercises</th>
+    <th scope="col">User</th>
+    <th scope="col"></th>
+  </tr>
 <% @workouts.each do |w| %>
-  <li><h3><%= w.name %></h3></li>
-  <ul>
-  <li><h4>User: <%= w.user.username %></h4></li>
-  <li>Date logged: <%= w.created_at.strftime("%m-%d-%y") %></li>
-  <li>Description: <%= w.description %></li>
-  <li>ID: <%= w.id %></li>
-  </ul>
-  <br>
+    <tr>
+      <td><%= w.name %></td>
+      <td><%= w.created_at.strftime("%a %x, %-I:%m %p") %></td>
+      <td><%= w.description %></td>
+      <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
+      <td><%= w.user.username %></td>
+      <form action="/workouts" method="POST">
+      <td><input id="edit" type="submit" value="Clone"></td>
+      <input type="hidden" name="clone_id" value="<%= w.id %>">
+      </form>
+    </tr>
 <% end %>
-</ol>
-<br>
-<a href="/workouts"><input type="submit" value="Go Back to My Workouts Index"></a>
-<br>
+</table>
 <br>
 <a href="/workouts/new"><input type="submit" value="Create New Workout"></a>
+<br>
+<br>
+<a href="/exercises/community"><input type="submit" value="See Community Exercises"></a>
+<br>
+<br>
+<a href="/workouts"><input type="submit" value="Back to My Workouts"></a>
