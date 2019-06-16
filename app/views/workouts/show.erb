@@ -1,4 +1,5 @@
-<h1><%= @workout.name %> (<%= @workout.created_at.strftime("%Y-%m-%d") %>)</h1>
+<h1><%= @workout.name %></h1>
+<h3>Created <%= @workout.created_at %></h3>
 <br>
 <form action="/workouts/<%= @workout.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
@@ -20,7 +21,7 @@
   </table>
   <br>
   <br>
-  
+
 </form>
 <br>
 <br>
@@ -38,6 +39,7 @@
       <th scope="col">Sets</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
     <% @workout.exercises.each do |e| %>
     <tr>
@@ -49,9 +51,15 @@
       <td><%= e.reps %></td>
       <td><%= e.sets %></td>
       <td><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="submit" value="Edit"></a></td>
+      
       <form action="/exercises/<%= e.id %>/delete" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <td><input id="delete" type="submit" value="Delete"></td>
+      </form>
+
+      <form action="/exercises" method="POST">
+      <input type="hidden" name="clone_id" value="<%= e.id %>">
+      <td><input id="edit" type="submit" value="Clone"></td>
       </form>
     </tr>
     <% end %>
@@ -59,12 +67,13 @@
       <form action="/exercises" method="POST">
         <td></td>
         <td><input type="text" name="exercise[name]" placeholder="Create a new exercise..."></td>
-        <td><textarea rows="1" name="exercise[description]" placeholder="Description..."></textarea></td>
-        <td><textarea rows="1"name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
+        <td><textarea rows="2" cols="10" name="exercise[description]" placeholder="Description..."></textarea></td>
+        <td><textarea rows="2" cols="10" name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
         <td><input id="number" type="text" name="exercise[weight]"></td>
         <td><input id="number" type="text" name="exercise[reps]"></td>
         <td><input id="number" type="text" name="exercise[sets]"></td>
         <td><input id="add" type="submit" value="Add"></td>
+        <td></td>
         <td></td>
         <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
       </form>
@@ -73,10 +82,10 @@
 </table>
 <br>
 <br>
+<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
+<br>
+<br>
 <form action="/workouts/<%= @workout.id %>/delete" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Workout!">
 </form>
-<br>
-<br>
-<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>

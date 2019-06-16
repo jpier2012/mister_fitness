@@ -13,12 +13,17 @@ class ExercisesController < ApplicationController
   end
 
   post "/exercises" do
-    workout = current_user.workouts.find_by_id(params[:exercise][:workout_id])
-    exercise = workout.exercises.build(params[:exercise])
-    exercise.user = current_user
+    if params[:clone_id]
+      old_exercise = Exercise.find_by_id(params[:clone_id])
+      exercise = old_exercise.dup
+    else
+      workout = current_user.workouts.find_by_id(params[:exercise][:workout_id])
+      exercise = workout.exercises.build(params[:exercise])
+      exercise.user = current_user
+    end
     exercise.save
     session[:errors] = exercise.errors.to_a if exercise.errors.any?
-    redirect "/workouts/#{workout.id}"
+    redirect "/workouts/#{ exercise.workout_id }"
   end
 
   get "/exercises/:id" do

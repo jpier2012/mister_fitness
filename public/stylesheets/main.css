@@ -28,6 +28,8 @@
   }
 
   h1 {
+    background-color: lightseagreen;
+    color: white;
     text-align: center;
     font-size: 36px;
     line-height: 54px;
@@ -45,6 +47,9 @@
   }
 
   h3 {
+    background-color: lightseagreen;
+    color: white;
+    text-align: center;
     border-bottom: 2px solid #ccc;
     font-size: 18px;
     line-height: 36px;
