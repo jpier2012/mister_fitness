@@ -1,6 +1,6 @@
-# BeautifulBillboard
+# MisterFitness
 
-Welcome to the Mister Fitness! This is my second project as a Flatiron school student.
+Welcome to the Mister Fitness app! This is my second project as a Flatiron school student.
 
 # Installation
 
