@@ -13,6 +13,9 @@ Change to the cloned Beautiful Billboard directory:
 Install all required gems:
 ```bundle```
 
+Migrate the database:
+```rake db:migrate```
+
 Initiate shotgun:
 ```shotgun```
 
