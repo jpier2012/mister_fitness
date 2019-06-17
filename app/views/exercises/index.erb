@@ -5,7 +5,7 @@
 <% @exercises.each do |e| %>
   <li><h2><a href="/exercises/<%= e.id %>/edit"><%= e.name %></a></h2></li>
   <ul>
-  <li>Date logged: <%= e.created_at.strftime("%m-%d-%y") %></li>
+  <li>Date logged: <%= e.created_at.strftime("%a %m/%e/%y,%l:%M %p") %></li>
   <li>Description: <%= e.description %></li>
   <li>Instructions: <%= e.instructions %></li>
   <li>Weight: <%= e.weight %></li>
@@ -18,4 +18,4 @@
   <br>
 <% end %>
 </ol>
-<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
+<a href="/workouts"><input type="button" value="Return to Workout Index"></a>

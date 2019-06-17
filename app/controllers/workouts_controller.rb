@@ -15,6 +15,7 @@ class WorkoutsController < ApplicationController
     if params[:clone_id]
       old_workout = Workout.find_by_id(params[:clone_id])
       workout = old_workout.dup
+      workout.user_id = current_user.id
       workout.save
       old_workout.exercises.each do |e|
         new_exercise = e.dup
@@ -37,7 +38,7 @@ class WorkoutsController < ApplicationController
 
   get "/workouts/community" do
     redirect_if_not_logged_in
-    @workouts = Workout.all
+    @workouts = Workout.all.order(created_at: :desc)
     erb :"workouts/community"
   end
 

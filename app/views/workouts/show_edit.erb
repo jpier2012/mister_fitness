@@ -48,6 +48,8 @@
       <td><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="submit" value="Edit"></a></td>
 
       <form action="/exercises" method="POST">
+
+      <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
       <input type="hidden" name="clone_id" value="<%= e.id %>">
       <td><input id="edit" type="submit" value="Clone"></td>
       </form>
@@ -76,7 +78,7 @@
   </tbody>
 </table>
 <br>
-<h4>Add an existing exercise: </h4>
+<h3>Add an existing exercise: </h3>
 <br>
 <form action="/exercises" method="POST">
   <select name="clone_id">
@@ -84,6 +86,7 @@
     <option value="<%= e.id %>"><%= "Name: #{e.name} / Weight: #{e.weight} / Reps: #{e.reps} / Sets: #{e.sets}"%></option>
   <% end %>
   </select>
+<input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
 <input id="add" type="submit" value="Add">
 </form>
 <br>

@@ -16,6 +16,7 @@ class ExercisesController < ApplicationController
     if params[:clone_id]
       old_exercise = Exercise.find_by_id(params[:clone_id])
       exercise = old_exercise.dup
+      exercise.workout_id = params[:exercise][:workout_id]
     else
       workout = current_user.workouts.find_by_id(params[:exercise][:workout_id])
       exercise = workout.exercises.build(params[:exercise])

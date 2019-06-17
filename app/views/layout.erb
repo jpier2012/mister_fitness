@@ -28,10 +28,15 @@
       </ul>
     </div>
     <% end %>
+    <h1>MISTER FITNESS</h1>
+    
         <%= yield %>
 
       <footer class="branding">
       <% if logged_in? %>
+        <%= "Current User: #{ current_user.username }"%>
+        <br>
+        <br>
         <a href="/logout"><input type="submit" value="Logout"></a>
       <% end %>
       <br>
