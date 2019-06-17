@@ -44,7 +44,7 @@ class ExercisesController < ApplicationController
   patch "/exercises/:id" do
     exercise = current_user.exercises.find_by_id(params[:id])
     exercise.update(params[:exercise])
-    redirect "/exercises"
+    redirect "/workouts/#{ exercise.workout_id }"
   end
 
   delete "/exercises/:id/delete" do
