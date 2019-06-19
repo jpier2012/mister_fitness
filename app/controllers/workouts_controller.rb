@@ -28,9 +28,7 @@ class WorkoutsController < ApplicationController
         log_errors(workout)
         redirect "/workouts/new"
       end
-      exercise = workout.exercises.build(params[:exercise])
-      exercise.workout.user = current_user
-      exercise.save
+      exercise = workout.exercises.create(params[:exercise])
       log_errors(exercise)
     end
     redirect "/workouts/#{ workout.id }"

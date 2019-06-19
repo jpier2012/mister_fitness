@@ -18,15 +18,14 @@ class ExercisesController < ApplicationController
       old_exercise = Exercise.find_by_id(params[:clone_id])
       exercise = old_exercise.dup
       exercise.workout_id = params[:exercise][:workout_id]
+      exercise.save
     elsif params[:exercise][:workout_id] != ""
       workout = current_user.workouts.find_by_id(params[:exercise][:workout_id])
-      exercise = workout.exercises.build(params[:exercise])
-      exercise.workout.user = current_user
+      exercise = workout.exercises.create(params[:exercise])
     else
       session[:errors] = ["Please select a workout from the dropdown"]
       redirect "/exercises/new"
     end
-    exercise.save
     log_errors(exercise)
     redirect "/workouts/#{ exercise.workout_id }"
   end
