@@ -15,19 +15,19 @@
   </head>
   <body>
     <div class="wrapper">
-    <% if @errors %>
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-      <strong>Woops!</strong> The following errors have occurred:
-      <br>
-      <br>
-      <ul>
-      <% @errors.each do |msg| %>
-        <li><%= msg %></li>
+      <% if @errors %>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Woops!</strong> The following errors have occurred:
+          <br>
+          <br>
+          <ul>
+          <% @errors.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-    <% end %>
     <h1>MISTER FITNESS</h1>
     
         <%= yield %>

@@ -23,7 +23,7 @@
 <caption>Add your first exercise!</caption>
   <tbody>
     <tr>
-      <th scope="col">No.</th>
+      <th scope="col" id="number">No.</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col">Instructions</th>
@@ -33,7 +33,7 @@
     </tr>
     <tr>
       <form action="/exercises" method="POST">
-        <td></td>
+        <td id="number"></td>
         <td><input type="text" name="exercise[name]" placeholder="Create a new exercise..."></td>
         <td><textarea rows="1" name="exercise[description]" placeholder="Description..."></textarea></td>
         <td><textarea rows="1"name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
