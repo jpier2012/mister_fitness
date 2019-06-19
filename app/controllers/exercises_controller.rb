@@ -34,6 +34,7 @@ class ExercisesController < ApplicationController
   get "/exercises/:id" do
     redirect_if_not_logged_in
     @exercise = current_user.exercises.find_by_id(params[:id])
+    redirect "/exercises" if !@exercise
     erb :"exercises/show"
   end
 
@@ -41,13 +42,13 @@ class ExercisesController < ApplicationController
     redirect_if_not_logged_in
     error_check
     @workouts = current_user.workouts
-    @exercise = Exercise.find_by_id(params[:id])
+    @exercise = current_user.exercises.find_by_id(params[:id])
     redirect "/exercises" if !@exercise
     erb :"exercises/edit"
   end
 
   patch "/exercises/:id" do
-    exercise = current_user.exercises.find_by_id(params[:id])
+    exercise = Exercise.find_by_id(params[:id])
     redirect "/workouts" if !authorized_to_edit?(exercise.workout)
     if params[:exercise][:workout_id] == ""
       session[:errors] = ["Please select a workout from the dropdown"]
@@ -58,7 +59,7 @@ class ExercisesController < ApplicationController
   end
 
   delete "/exercises/:id/delete" do
-    exercise = current_user.exercises.find_by_id(params[:id])
+    exercise = Exercise.find_by_id(params[:id])
     redirect "/workouts" if !authorized_to_edit?(exercise.workout)
     workout_id = exercise.workout_id
     exercise.delete if exercise
