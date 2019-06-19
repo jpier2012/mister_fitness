@@ -1,0 +1,93 @@
+<h1>Workout Show page</h1>
+<h2><%= @workout.name %></h2>
+<h3>Created <%= @workout.created_at %></h3>
+<br>
+  <table id="workout_detail">
+    <tbody>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Instructions</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td><%= @workout.name %></td>
+        <td><%= @workout.description %></td>
+        <td><%= @workout.instructions %></td>
+        <td><a href="/workouts/<%= @workout.id %>/edit"><input type="button" value="Edit!"></a></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<br>
+<h2>Exercises</h2>
+<% if @workout.exercises.empty? %>
+  <p>This workout does not have any exercises.</p>
+<% else %>
+  <table id="exercises">
+    <tbody>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Instructions</th>
+        <th scope="col">Total Weight</th>
+        <th scope="col">Reps</th>
+        <th scope="col">Sets</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @workout.exercises.each do |e| %>
+      <tr>
+        <td></td>
+        <td><%= e.name %></td>
+        <td><%= e.description %></td>
+        <td><%= e.instructions %></td>
+        <td><%= e.weight %></td>
+        <td><%= e.reps %></td>
+        <td><%= e.sets %></td>
+        <td><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="submit" value="Edit"></a></td>
+
+        <form action="/exercises" method="POST">
+
+        <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
+        <input type="hidden" name="clone_id" value="<%= e.id %>">
+        <td><input id="edit" type="submit" value="Clone"></td>
+        </form>
+
+        <form action="/exercises/<%= e.id %>/delete" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <td><input id="delete" type="submit" value="Delete"></td>
+        </form>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
+<a href="/workouts/<%= @workout.id %>/edit"><input type="submit" value="Add New Exercise!"></a>
+<br>
+<br>
+<h3>Add an existing exercise: </h3>
+<br>
+<form action="/exercises" method="POST">
+  <select name="clone_id">
+  <% @exercises.each do |e| %>
+    <option value="<%= e.id %>"><%= "Name: #{e.name} / Weight: #{e.weight} / Reps: #{e.reps} / Sets: #{e.sets}"%></option>
+  <% end %>
+  </select>
+<input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
+<input id="add" type="submit" value="Add">
+</form>
+<br>
+<br>
+<a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
+<br>
+<br>
+<a href="/exercises"><input type="submit" value="Return to Exercises Index"></a>
+<br>
+<br>
+<form action="/workouts/<%= @workout.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Workout!">
+</form>

@@ -3,7 +3,7 @@
 <br>
 <ol>
 <% @exercises.each do |e| %>
-  <li><h2><a href="/exercises/<%= e.id %>/edit"><%= e.name %></a></h2></li>
+  <li><%= e.name %></li>
   <ul>
   <li>Date logged: <%= e.created_at.strftime("%a %m/%e/%y,%l:%M %p") %></li>
   <li>Description: <%= e.description %></li>
@@ -14,8 +14,9 @@
   <li>User ID: <%= e.user_id %></li>
   <li>Workout ID: <%= e.workout_id %></li>
   <li>ID: <%= e.id %></li>
-  </ul>
+  <li><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="button" value="Edit"></a></li>
   <br>
+  </ul>
 <% end %>
 </ol>
 <a href="/workouts"><input type="button" value="Return to Workout Index"></a>

@@ -48,14 +48,15 @@ class WorkoutsController < ApplicationController
     @workout = current_user.workouts.find_by_id(params[:id])
     redirect "/workouts" if !@workout
     @exercises = Exercise.all
-    erb :"workouts/show_edit"
+    erb :"workouts/show"
   end
 
   get "/workouts/:id/edit" do
     redirect_if_not_logged_in
     @workout = current_user.workouts.find_by_id(params[:id])
+    @exercises = Exercise.all
     redirect "/workouts" if !@workout
-    erb :"workouts/show_edit"
+    erb :"workouts/edit"
   end
 
   patch "/workouts/:id" do
