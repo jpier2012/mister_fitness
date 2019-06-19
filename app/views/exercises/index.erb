@@ -11,12 +11,17 @@
   <li>Weight: <%= e.weight %></li>
   <li>Reps: <%= e.reps %></li>
   <li>Sets: <%= e.sets %></li>
-  <li>User ID: <%= e.user_id %></li>
+  <li>User ID: <%= e.workout.user_id %></li>
   <li>Workout ID: <%= e.workout_id %></li>
   <li>ID: <%= e.id %></li>
-  <li><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="button" value="Edit"></a></li>
+  <li><a href="/exercises/<%= e.id %>/edit"><input id="edit" type="button" value="Edit"></a>
+  <a href="/exercises/<%= e.id %>"><input id="edit" type="button" value="Show"></a></li>
   <br>
   </ul>
 <% end %>
 </ol>
+<a href="/exercises/new"><input type="button" value="Create New Exercise"></a>
+<br>
+<br>
 <a href="/workouts"><input type="button" value="Return to Workout Index"></a>
+

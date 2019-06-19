@@ -1,6 +1,5 @@
 <h1>New Exercise!</h1>
 <br>
-
 <form action="/exercises" method="POST">
 
 <label for="exercise[workout_id]">Choose an existing workout</label>
@@ -12,8 +11,8 @@
 </select>
 <br>
 <br>
-<label for="exercise[name]">Enter a name: </label>
-<input type="text" name="exercise[name]">
+<label for="exercise[name]">Enter an exercise name: </label>
+<input required type="text" name="exercise[name]">
 <br>
 <br>
 <label for="exercise[description]">Enter a description: </label>
@@ -34,7 +33,6 @@
 <br>
 <label for="exercise[sets]">Enter sets: </label>
 <input type="text" name="exercise[sets]">
-<br>
 <br>
 <br>
 <br>

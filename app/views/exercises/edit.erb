@@ -1,10 +1,17 @@
 <h1>Edit Exercise!</h1>
 <form action="/exercises/<%= @exercise.id %>" method="POST">
 <input type="hidden" name="_method" value="PATCH">
+<label for="exercise[workout_id]">Choose an existing workout</label>
+<select name="exercise[workout_id]">
+<option selected="selected">Current: <%= @exercise.workout.name %></option>
+<% @workouts.each do |w| %>
+  <option value="<%= w.id %>"><%= w.name %></option>
+<% end %>
+</select>
 <br>
 <br>
 <label for="exercise[name]">Update name: </label>
-<input type="text" name="exercise[name]" value="<%= @exercise.name %>">
+<input required type="text" name="exercise[name]" value="<%= @exercise.name %>">
 <br>
 <br>
 <label for="exercise[description]">Enter a description: </label>

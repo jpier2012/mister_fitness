@@ -10,7 +10,7 @@
         <th>Instructions</th>
       </tr>
       <tr>
-        <td><input type="text" name="workout[name]" placeholder="Name..."></td>
+        <td><input required type="text" name="workout[name]" placeholder="Name..."></td>
         <td><textarea rows="1" name="workout[description]" placeholder="Description..."></textarea></td>
         <td><textarea rows="1" name="workout[instructions]" placeholder="Instructions..."></textarea></td>
       </tr>
@@ -34,7 +34,7 @@
     <tr>
       <form action="/exercises" method="POST">
         <td id="number"></td>
-        <td><input type="text" name="exercise[name]" placeholder="Create a new exercise..."></td>
+        <td><input required type="text" name="exercise[name]" placeholder="Create a new exercise..."></td>
         <td><textarea rows="1" name="exercise[description]" placeholder="Description..."></textarea></td>
         <td><textarea rows="1"name="exercise[instructions]" placeholder="Instructions..."></textarea></td>
         <td><input id="number" type="text" name="exercise[weight]"></td>

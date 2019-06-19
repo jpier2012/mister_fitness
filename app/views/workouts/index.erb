@@ -13,7 +13,7 @@
 <% @workouts.each do |w| %>
     <tr>
       <td><%= w.name %></td>
-      <td><%= w.created_at.strftime("%a %x, %-I:%m %p") %></td>
+      <td><%= w.created_at %></td>
       <td><%= w.description %></td>
       <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
 
@@ -33,6 +33,9 @@
 </table>
 <br>
 <a href="/workouts/new"><input type="button" value="Create New Workout"></a>
+<br>
+<br>
+<a href="/exercises/new"><input type="button" value="Create New Exercise"></a>
 <br>
 <br>
 <a href="/exercises"><input type="button" value="See All Exercises"></a>

@@ -33,6 +33,10 @@ class ApplicationController < Sinatra::Base
     def log_errors(obj)
       session[:errors] = obj.errors.to_a if obj.errors.any?
     end
+
+    def authorized_to_edit?(object)
+      object.user_id == current_user.id
+    end
   end
 
 end

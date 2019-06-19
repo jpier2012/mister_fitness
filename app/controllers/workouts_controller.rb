@@ -29,7 +29,7 @@ class WorkoutsController < ApplicationController
         redirect "/workouts/new"
       end
       exercise = workout.exercises.build(params[:exercise])
-      exercise.user = current_user
+      exercise.workout.user = current_user
       exercise.save
       log_errors(exercise)
     end
@@ -61,13 +61,15 @@ class WorkoutsController < ApplicationController
 
   patch "/workouts/:id" do
     workout = current_user.workouts.find_by_id(params[:id])
+    redirect "/workouts" if !authorized_to_edit?(workout)
     workout.update(params[:workout])
     log_errors(workout)
-    redirect "/workouts/#{workout.id}"
+    redirect "/workouts/#{ workout.id }"
   end
 
   delete "/workouts/:id/delete" do
     workout = current_user.workouts.find_by_id(params[:id])
+    redirect "/workouts" if !authorized_to_edit?(workout)
     if workout
       Exercise.where(workout_id: workout.id).delete_all
       workout.delete

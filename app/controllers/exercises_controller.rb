@@ -2,12 +2,13 @@ class ExercisesController < ApplicationController
 
   get "/exercises" do
     redirect_if_not_logged_in
-    @exercises = current_user.exercises.all
+    @exercises = current_user.exercises
     erb :"exercises/index"
   end
 
   get "/exercises/new" do
     redirect_if_not_logged_in
+    error_check
     @workouts = current_user.workouts
     erb :"exercises/new"
   end
@@ -17,10 +18,13 @@ class ExercisesController < ApplicationController
       old_exercise = Exercise.find_by_id(params[:clone_id])
       exercise = old_exercise.dup
       exercise.workout_id = params[:exercise][:workout_id]
-    else
+    elsif params[:exercise][:workout_id] != ""
       workout = current_user.workouts.find_by_id(params[:exercise][:workout_id])
       exercise = workout.exercises.build(params[:exercise])
-      exercise.user = current_user
+      exercise.workout.user = current_user
+    else
+      session[:errors] = ["Please select a workout from the dropdown"]
+      redirect "/exercises/new"
     end
     exercise.save
     log_errors(exercise)
@@ -35,6 +39,7 @@ class ExercisesController < ApplicationController
 
   get "/exercises/:id/edit" do
     redirect_if_not_logged_in
+    error_check
     @workouts = current_user.workouts
     @exercise = Exercise.find_by_id(params[:id])
     redirect "/exercises" if !@exercise
@@ -43,12 +48,18 @@ class ExercisesController < ApplicationController
 
   patch "/exercises/:id" do
     exercise = current_user.exercises.find_by_id(params[:id])
+    redirect "/workouts" if !authorized_to_edit?(exercise.workout)
+    if params[:exercise][:workout_id] == ""
+      session[:errors] = ["Please select a workout from the dropdown"]
+      redirect "/exercises/#{ exercise.id }/edit"
+    end
     exercise.update(params[:exercise])
     redirect "/workouts/#{ exercise.workout_id }"
   end
 
   delete "/exercises/:id/delete" do
     exercise = current_user.exercises.find_by_id(params[:id])
+    redirect "/workouts" if !authorized_to_edit?(exercise.workout)
     workout_id = exercise.workout_id
     exercise.delete if exercise
     redirect "/workouts/#{ workout_id }"

@@ -1,40 +1,18 @@
-<h1>Edit Exercise!</h1>
-<form action="/exercises/<%= @exercise.id %>" method="POST">
-<input type="hidden" name="_method" value="PATCH">
+<h1>Show Exercise!</h1>
+<h2><%= @exercise.name %></h2>
+  <ul>
+  <li>Date logged: <%= @exercise.created_at.strftime("%a %m/%e/%y,%l:%M %p") %></li>
+  <li>Description: <%= @exercise.description %></li>
+  <li>Instructions: <%= @exercise.instructions %></li>
+  <li>Weight: <%= @exercise.weight %></li>
+  <li>Reps: <%= @exercise.reps %></li>
+  <li>Sets: <%= @exercise.sets %></li>
+  <li>User ID: <%= @exercise.workout.user_id %></li>
+  <li>Workout ID: <%= @exercise.workout_id %></li>
+  <li>ID: <%= @exercise.id %></li>
 <br>
+<a href="/exercises/<%= @exercise.id %>/edit"><input type="button" value="Edit Exercise"></a>
 <br>
-<label for="exercise[name]">Update name: </label>
-<input type="text" name="exercise[name]" value="<%= @exercise.name %>">
-<br>
-<br>
-<label for="exercise[description]">Enter a description: </label>
-<textarea rows="1" name="exercise[description]"><%= @exercise.description %></textarea>
-<br>
-<br>
-<label for="exercise[instructions]">Enter instructions: </label>
-<textarea rows="1" name="exercise[instructions]"><%= @exercise.instructions %></textarea>
-<br>
-<br>
-<label for="exercise[weight]">Enter a weight: </label>
-<input type="text" name="exercise[weight]" value="<%= @exercise.weight %>">
-<br>
-<br>
-<label for="exercise[reps]">Enter reps: </label>
-<input type="text" name="exercise[reps]" value="<%= @exercise.reps %>">
-<br>
-<br>
-<label for="exercise[sets]">Enter sets: </label>
-<input type="text" name="exercise[sets]" value="<%= @exercise.sets %>">
-<br>
-<br>
-<br>
-<input type="submit" value="Update Exercise!">
-</form>
-<br>
-<form action="/exercises/<%= @exercise.id %>/delete" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Exercise!">
-</form>
 <br>
 <a href="/workouts/<%= @exercise.workout_id %>"><input type="submit" value="Return to Workout"></a>
 <br>
