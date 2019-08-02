@@ -65,7 +65,10 @@
   </table>
 <% end %>
 <br>
-<a href="/workouts/<%= @workout.id %>/edit"><input type="submit" value="Add New Exercise!"></a>
+<form action="/exercises/new" method="GET">
+  <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
+  <td><input type="submit" value="Add New Exercise!"></td>
+</form>
 <br>
 <br>
 <h3>Add an existing exercise: </h3>

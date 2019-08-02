@@ -4,9 +4,8 @@
 
 <label for="exercise[workout_id]">Choose an existing workout</label>
 <select name="exercise[workout_id]">
-<option selected="selected"></option>
 <% @workouts.each do |w| %>
-  <option value="<%= w.id %>"><%= w.name %></option>
+  <option value="<%= w.id %>" <%= "selected" if w.id = params[:exercise][:workout_id] %>><%= w.name %></option>
 <% end %>
 </select>
 <br>
