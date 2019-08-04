@@ -13,6 +13,9 @@ class ExercisesController < ApplicationController
     erb :"exercises/new"
   end
 
+  # the clone feature was not required for the project but was added for a fun challenge,
+  # it allows you to duplicate a workout created by another user 
+
   post "/exercises" do
     if params[:clone_id]
       old_exercise = Exercise.find_by_id(params[:clone_id])
