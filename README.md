@@ -7,7 +7,7 @@ Welcome to the Mister Fitness app! This is my second project as a Flatiron schoo
 Clone the github repository by entering the following commands into your IDE terminal:
 ```git clone git@github.com:jpier2012/mister_fitness.git```
 
-Change to the cloned Beautiful Billboard directory:
+Change to the cloned mister_fitness directory:
 ```cd mister_fitness```
 
 Install all required gems:
