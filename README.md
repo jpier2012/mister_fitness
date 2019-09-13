@@ -1,6 +1,8 @@
 # MisterFitness
 
-Welcome to the Mister Fitness app! This is my second project as a Flatiron school student.
+With MisterFitness you can log your workouts online to keep track of your athletic progress over time. You can also share your workouts with your friends to add some friendly competition! MisterFitness even makes it easy to duplicate a friend's workout for an added convenience! Each workout is composed of exercises that are created from scratch or cloned from existing exercises. 
+
+This is my second project as a Flatiron school student.
 
 # Installation
 
