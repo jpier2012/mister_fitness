@@ -10,9 +10,9 @@ This is my second project as a Flatiron school student.
 
 After ceating a login, create your first workout or check out the Community Workouts page to see workouts other users have created. From there you can clone another user's workout to create a duplicate in your name, which creates a new record with the same information but with its own completed date.
 
-Exercises work similarly - when editing a workout you can add exercises that have been created by other people in a global exercise list.
+Exercises work similarly - when editing a workout you can add exercises that have been created by other people via an exercise dropdown list on the workout edit page.
 
-Once you've gotten your workouts created, everytime you exercise, just clone a previous workout and edit with new information, if necessary. This way, tracking your physical fitness is as easy as ever!
+Once you've gotten your workouts created, every time you exercise, just clone a previous workout and edit it if the information changes. This way, tracking your activity is as easy as ever!
 
 ## License
 
