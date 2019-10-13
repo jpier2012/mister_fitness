@@ -12,7 +12,7 @@
 <% @workouts.each do |w| %>
     <tr>
       <td><%= w.name %></td>
-      <td><%= w.created_at.strftime("%a %m/%e/%y,%l:%M %p") %></td>
+      <td><%= w.created_at.strftime("%Y/%m/%d") %></td>
       <td><%= w.description %></td>
       <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
       <td><%= w.user.username %></td>

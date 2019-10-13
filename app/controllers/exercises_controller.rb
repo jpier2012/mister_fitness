@@ -30,7 +30,7 @@ class ExercisesController < ApplicationController
       redirect "/exercises/new"
     end
     log_errors(exercise)
-    redirect "/workouts/#{ exercise.workout_id }"
+    redirect "/workouts/#{ exercise.workout_id }/edit"
   end
 
   get "/exercises/:id" do

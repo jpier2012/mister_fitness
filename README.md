@@ -1,36 +1,22 @@
 # MisterFitness
 
-With MisterFitness you can log your workouts online to keep track of your athletic progress over time. You can also share your workouts with your friends to add some friendly competition! MisterFitness even makes it easy to duplicate a friend's workout for an added convenience! Each workout is composed of exercises that are created from scratch or cloned from existing exercises. 
+With MisterFitness you can log your workouts online to keep track of your athletic progress over time. You can also share your workouts with your friends to add some friendly competition! MisterFitness even makes it easy to duplicate a friend's workout for an added convenience. Each workout is composed of exercises that are created from scratch or cloned from existing exercises.
+
+[Click Here to see the Live App (with test data)](https://mister-fitness.herokuapp.com/)
 
 This is my second project as a Flatiron school student.
 
-# Installation
-
-Clone the github repository by entering the following commands into your IDE terminal:
-```git clone git@github.com:jpier2012/mister_fitness.git```
-
-Change to the cloned mister_fitness directory:
-```cd mister_fitness```
-
-Install all required gems:
-```bundle```
-
-Migrate the database:
-```rake db:migrate```
-
-Initiate shotgun:
-```shotgun```
-
-Then visit localhost:9393/signup to get started!
-
 # Instructions
 
-After signing up, create your first workout. From there you can either edit the workout or continue to create new ones.
+After ceating a login, create your first workout or check out the Community Workouts page to see workouts other users have created. From there you can clone another user's workout to create a duplicate in your name, which creates a new record with the same information but with its own completed date.
+
+Exercises work similarly - when editing a workout you can add exercises that have been created by other people in a global exercise list.
+
+Once you've gotten your workouts created, everytime you exercise, just clone a previous workout and edit with new information, if necessary. This way, tracking your physical fitness is as easy as ever!
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
 
 ## Contributing
 

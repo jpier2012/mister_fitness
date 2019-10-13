@@ -1,6 +1,6 @@
 <h1>Workout Show page</h1>
 <h2><%= @workout.name %></h2>
-<h3>Created <%= @workout.created_at %></h3>
+<h3>Created <%= @workout.created_at.strftime("%Y/%m/%d") %></h3>
 <br>
   <table id="workout_detail">
     <tbody>
@@ -67,22 +67,8 @@
 <br>
 <form action="/exercises/new" method="GET">
   <input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
-  <td><input type="submit" value="Add New Exercise!"></td>
+  <td><input type="submit" value="Add a Brand New Exercise!"></td>
 </form>
-<br>
-<br>
-<h3>Add an existing exercise: </h3>
-<br>
-<form action="/exercises" method="POST">
-  <select name="clone_id">
-  <% @exercises.each do |e| %>
-    <option value="<%= e.id %>"><%= "Name: #{e.name} / Weight: #{e.weight} / Reps: #{e.reps} / Sets: #{e.sets}"%></option>
-  <% end %>
-  </select>
-<input type="hidden" name="exercise[workout_id]" value="<%= @workout.id %>">
-<input id="add" type="submit" value="Add">
-</form>
-<br>
 <br>
 <a href="/workouts"><input type="submit" value="Return to Workout Index"></a>
 <br>

@@ -13,11 +13,11 @@
 <% @workouts.each do |w| %>
     <tr>
       <td><%= w.name %></td>
-      <td><%= w.created_at %></td>
+      <td><%= w.created_at.strftime("%Y/%m/%d") %></td>
       <td><%= w.description %></td>
       <td><%= w.exercises.collect { |e| e.name }.join(", ") %></td>
 
-      <td><a href="/workouts/<%= w.id %>"><input id="edit" type="submit" value="Edit"></a></td>
+      <td><a href="/workouts/<%= w.id %>"><input id="edit" type="submit" value="Details"></a></td>
 
       <form action="/workouts" method="POST">
       <input type="hidden" name="clone_id" value="<%= w.id %>">
