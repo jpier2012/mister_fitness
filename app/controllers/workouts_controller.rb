@@ -25,6 +25,7 @@ class WorkoutsController < ApplicationController
         new_exercise.workout_id = workout.id
         new_exercise.save
       end
+      redirect "/workouts"
     else
       workout = current_user.workouts.create(params[:workout])
       if workout.invalid?
@@ -33,8 +34,8 @@ class WorkoutsController < ApplicationController
       end
       exercise = workout.exercises.create(params[:exercise])
       log_errors(exercise)
+      redirect "/workouts/#{ workout.id }"
     end
-    redirect "/workouts/#{ workout.id }"
   end
 
   get "/workouts/community" do
