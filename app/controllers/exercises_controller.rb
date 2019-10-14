@@ -57,7 +57,7 @@ class ExercisesController < ApplicationController
       redirect "/exercises/#{ exercise.id }/edit"
     end
     exercise.update(params[:exercise])
-    redirect "/workouts/#{ exercise.workout_id }"
+    redirect "/workouts/#{ exercise.workout_id }/edit"
   end
 
   delete "/exercises/:id/delete" do
@@ -65,6 +65,6 @@ class ExercisesController < ApplicationController
     redirect "/workouts" if !authorized_to_edit?(exercise.workout)
     workout_id = exercise.workout_id
     exercise.delete if exercise
-    redirect "/workouts/#{ workout_id }"
+    redirect "/workouts/#{ workout_id }/edit"
   end
 end
