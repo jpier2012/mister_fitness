@@ -1,0 +1,49 @@
+<h1>Edit Exercise!</h1>
+<form action="/exercises/<%= @exercise.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<label for="exercise[workout_id]">Choose an existing workout</label>
+<select name="exercise[workout_id]">
+<option selected="selected" value="<%= @exercise.workout.id %>">Current: <%= @exercise.workout.name %></option>
+<% @workouts.each do |w| %>
+  <option value="<%= w.id %>"><%= w.name %></option>
+<% end %>
+</select>
+<br>
+<br>
+<label for="exercise[name]">Update name: </label>
+<input required type="text" name="exercise[name]" value="<%= @exercise.name %>">
+<br>
+<br>
+<label for="exercise[description]">Enter a description: </label>
+<textarea rows="1" name="exercise[description]"><%= @exercise.description %></textarea>
+<br>
+<br>
+<label for="exercise[instructions]">Enter instructions: </label>
+<textarea rows="1" name="exercise[instructions]"><%= @exercise.instructions %></textarea>
+<br>
+<br>
+<label for="exercise[weight]">Enter a weight: </label>
+<input type="text" name="exercise[weight]" value="<%= @exercise.weight %>">
+<br>
+<br>
+<label for="exercise[reps]">Enter reps: </label>
+<input type="text" name="exercise[reps]" value="<%= @exercise.reps %>">
+<br>
+<br>
+<label for="exercise[sets]">Enter sets: </label>
+<input type="text" name="exercise[sets]" value="<%= @exercise.sets %>">
+<br>
+<br>
+<br>
+<input type="submit" value="Update Exercise!">
+</form>
+<br>
+<form action="/exercises/<%= @exercise.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Exercise!">
+</form>
+<br>
+<a href="/workouts/<%= @exercise.workout_id %>"><input type="button" value="Return to Workout"></a>
+<br>
+<br>
+<a href="/exercises"><input type="button" value="Return to Exercises Index"></a>

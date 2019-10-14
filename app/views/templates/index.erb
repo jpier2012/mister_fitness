@@ -1,0 +1,13 @@
+<h1>Exercise Templates Index!</h1>
+<h3>Showing all templates you've created</h3>
+<br>
+<ol>
+<% @templates.each do |t| %>
+  <li><%= t.name %></li>
+<% end %>
+</ol>
+<a href="/templates/new"><input type="button" value="Create New Template"></a>
+<br>
+<br>
+<a href="/templates"><input type="button" value="Return to Workouts Index"></a>
+
